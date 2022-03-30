@@ -1,10 +1,12 @@
 const request = require("supertest");
 const { mongoConnect, mongoDisconnect } = require("../../services/mongo");
 const app = require("../../app");
+const { loadLaunchData } = require("../../models/launches.model");
 
 describe("APIs", () => {
   beforeAll(async () => {
     await mongoConnect();
+    await loadLaunchData();
   });
 
   afterAll(async () => {
